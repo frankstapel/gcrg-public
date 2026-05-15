@@ -8,6 +8,8 @@ The code is designed to be used with your own climbing route data, making it reu
 
 **Note**: This is research code developed as part of an academic project. While well-tested, it may contain bugs or assumptions specific to the original research context. Users are responsible for validating results for their own use cases.
 
+**Documentation note**: Explanatory files such as `SCORES_AND_COSTS.md` were generated with the assistance of a language model. The repository code itself was hand-authored and then reviewed for consistency by the same model.
+
 ## Quick Start
 
 ### Prerequisites
