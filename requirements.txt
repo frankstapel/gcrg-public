@@ -1,0 +1,17 @@
+beautifulsoup4==4.11.1
+selenium==4.4.3
+numpy==1.23.2
+Pillow==9.2.0
+scikit-learn==1.1.2
+tensorflow==2.10.0
+keras==2.10.0
+pandas==1.4.4
+PyNomaly==0.3.3
+sklearn==0.0
+plotly
+kaleido
+matplotlib==3.6.2
+seaborn==0.12.1
+scipy==1.9.3
+deprecation==2.1.0
+qrcode==7.3
