@@ -1,4 +1,4 @@
-y# Data Format and Structure
+# Data Format and Structure
 
 This project analyzes climbing routes for training boards. To use this code, provide your route data in one of the accepted formats below.
 
