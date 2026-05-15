@@ -26,7 +26,7 @@ The code is designed to be used with your own climbing route data, making it reu
 2. **Configure settings**: Edit `settings.py` to specify your data year and board type
 3. **Run the analysis**: 
    ```bash
-   python main.pyy
+   python main.py
    ```
 
 This will:
@@ -67,6 +67,7 @@ This will:
 ### Required Data
 - **Route dataset**: See [DATA.md](DATA.md) for format specifications
 - **Format**: JSON or pickle file with route grades and hold coordinates
+- **Location**: `data/routes_input/{YEAR}_{BOARD}.json` or `data/routes_input/{YEAR}_{BOARD}.pkl`
 
 ### Configuration
 Edit `settings.py`:
