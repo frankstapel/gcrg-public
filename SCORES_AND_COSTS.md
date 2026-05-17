@@ -141,6 +141,16 @@ These are converted to normalized values:
 
 That means the code treats each capability as a value roughly between 0 and 1.
 
+Each normalized capability is then used by the generation model in a defined way:
+
+- `reach` is used directly in `get_reach_cost` to determine whether a move distance is within the climber's physical reach.
+- `power` is combined with `reach` and the target `grade` to compute the route-specific `optimal_reach` for a move.
+- `finger_strength` is blended with the normalized `grade` in `get_finger_cost` to form the ideal next-hold difficulty.
+- `core_strength` is combined with `grade` in `get_footholds_cost` to form the ideal foothold support level.
+- `grade` appears in all of these cost calculations as the target route difficulty the move should match.
+
+This makes the model use the user's full action-capability profile, not just finger strength, when scoring route moves.
+
 ### Reach cost (`get_reach_cost`)
 
 This cost compares the move distance to an `optimal_reach` that depends on the climber's:
@@ -172,7 +182,7 @@ Additional hard constraints return a cost of `1.0` (bad) if:
 This cost compares the next hold's difficulty to the climber's effective finger capacity.
 
 - `next_score` is the hold score of the next hold
-- `finger_strength` is blended with the desired grade to represent both the climber's action capability and the intended difficulty:
+- The user's normalized `finger_strength` is blended with the desired route grade to represent both the climber's action capability and the intended difficulty:
 
 ```python
 finger_strength = finger_strength * 0.5 + grade * 0.5
