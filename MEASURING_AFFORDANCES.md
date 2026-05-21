@@ -85,7 +85,45 @@ Collect self-reported grade information as part of the climber profile:
 
 The route generator uses a normalized grade value to match target difficulty.
 
-## 8. Route testing notes
+## 8. Example generated route affordances
+
+The generator currently creates six example routes with three different affordance focus types.
+
+### 8.1 Common affordances across all six routes
+
+All six example routes share these common settings:
+
+- `reach: 10` — the same board reach assumption for every profile.
+- A normalized `grade` target tied to the route label (`6A+`, `6B+`, `6C+`, `7A+`).
+- `power` and `finger_strength` values are converted to a 0–1 scale inside the generator.
+- `core_strength` is converted to a 0–1 normalized value by dividing by 10.
+- `weights` determine the relative importance of power, finger strength, and foothold/corerelated move costs.
+
+Each route then varies one main focus by changing the weighted emphasis and the raw input values.
+
+### 8.2 Route profiles
+
+The generator currently creates six example routes with three different affordance focus types.
+Each profile uses the same base `reach` value and changes the strength emphasis by adjusting the `power`, `finger_strength`, `core_strength`, and `weights` values.
+
+| Route | Focus | Reach | Power | Finger strength | Core strength | Grade | Weights | Meaning |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Power focus | 10 | 1.5 | 1.1 | 2 | 6B+ | `power:0.7`, `finger_strength:0.15`, `footholds:0.15` | Emphasizes powerful, dynamic moves over small holds or foot detail. |
+| 2 | Power focus | 10 | 1.9 | 1.1 | 2 | 7A+ | `power:0.7`, `finger_strength:0.15`, `footholds:0.15` | A harder power-oriented route with strong reach and explosive movement. |
+| 3 | Finger strength focus | 10 | 1.1 | 1.5 | 2 | 6A+ | `power:0.15`, `finger_strength:0.7`, `footholds:0.15` | Prioritizes difficult handholds and grip strength over raw power or foot positioning. |
+| 4 | Finger strength focus | 10 | 1.1 | 1.9 | 2 | 6C+ | `power:0.15`, `finger_strength:0.7`, `footholds:0.15` | A harder finger-strength route with stronger hold difficulty and grip demands. |
+| 5 | Core/foothold focus | 10 | 1.1 | 1.1 | 5 | 6B+ | `power:0.15`, `finger_strength:0.15`, `footholds:0.7` | Emphasizes body tension and foothold quality rather than pure pulling strength. |
+| 6 | Core/foothold focus | 10 | 1.1 | 1.1 | 9 | 6C+ | `power:0.15`, `finger_strength:0.15`, `footholds:0.7` | A harder route that relies on core stability and footwork. |
+
+### How these values are used
+
+- `reach` defines how far the climber can move between holds.
+- `power` is converted to a 0–1 scale and used in reach-based move cost.
+- `finger_strength` is converted to a 0–1 scale and used in hold difficulty cost.
+- `core_strength` is normalized to 0–1 and used in foothold/coring move cost.
+- `weights` determine which move cost term matters most when the generator scores candidate moves.
+
+## 9. Route testing notes
 
 When validating generated routes:
 
